@@ -4,6 +4,12 @@
 
 # Home page
 GET        /                             controllers.Application.index
+GET        /foo                          controllers.Application.foo
+GET        /getform                      controllers.Application.getForm
+GET        /handleSubmission             controllers.Application.handleSubmission(username, color)
+
++ nocsrf
+POST       /handleSubmissionPost         controllers.Application.handleSubmissionPost
 
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)
