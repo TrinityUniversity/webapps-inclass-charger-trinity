@@ -4,7 +4,7 @@ import javax.inject._
 
 import shared.SharedMessages
 import play.api.mvc._
-
+import models._
 
 @Singleton
 class Application @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -61,9 +61,15 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
   def handleSubmissionPost = Action { request => 
     val postVals = request.body.asFormUrlEncoded
     postVals.map { args => 
-      val username = args("username").head
-      Redirect(routes.foo);
+      val email = args("email").head
+      val year = args("year").head
+      if (StudentDataModel.validateStudent(email, year)) {
+        Ok(s"$email is a $year .")
+      } else {
+        Redirect(routes.Application.getForm);
+      }   
     }.getOrElse(Ok("Shawty done messed up"))
   }
+
 }
 
