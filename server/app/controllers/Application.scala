@@ -64,7 +64,7 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
       val email = args("email").head
       val year = args("year").head
       if (StudentDataModel.validateStudent(email, year)) {
-        Ok(s"$email is a $year .")
+        Ok(views.html.logged(email, year))
       } else {
         Redirect(routes.Application.getForm);
       }   
