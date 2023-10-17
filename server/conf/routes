@@ -7,6 +7,7 @@ GET        /                             controllers.Application.index
 GET        /foo                          controllers.Application.foo
 GET        /getform                      controllers.Application.getForm
 GET        /handleSubmission             controllers.Application.handleSubmission(username, color)
+GET        /getNumber                    controllers.Application.getNumber
 
 + nocsrf
 POST       /handleSubmissionPost         controllers.Application.handleSubmissionPost

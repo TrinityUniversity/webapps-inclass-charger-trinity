@@ -71,5 +71,9 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
     }.getOrElse(Ok("Shawty done messed up"))
   }
 
+  def getNumber = Action {
+    Ok(views.html.ctr(CountingModel.getNumber()))
+  }
+
 }
 
