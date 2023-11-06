@@ -3,7 +3,7 @@
 @main("Counter") {
     <div>
         <h2>@ctr</h2>
-        <script src="../scripts/incrementCtr.js"></script>
-        <button id="incrementCtr">Increment!!!!</button>
+        <button id="inc">Increment!!!!</button>
+        <script src="@routes.Assets.versioned("scripts/incrementCtr.js")"></script>
     </div>
 }

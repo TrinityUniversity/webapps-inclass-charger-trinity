@@ -8,6 +8,9 @@ GET        /foo                          controllers.Application.foo
 GET        /getform                      controllers.Application.getForm
 GET        /handleSubmission             controllers.Application.handleSubmission(username, color)
 GET        /getNumber                    controllers.Application.getNumber
+GET        /counterPage                  controllers.Application.counterPage
+
+GET        /loadRapp                     controllers.Rapp.load
 
 + nocsrf
 POST       /handleSubmissionPost         controllers.Application.handleSubmissionPost

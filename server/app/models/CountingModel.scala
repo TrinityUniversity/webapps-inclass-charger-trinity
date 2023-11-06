@@ -8,8 +8,9 @@ object CountingModel {
         return ctr
     }
     
-    def incrementCtr():Unit = {
+    def incNumber():Int = {
         ctr += 1
+        return ctr
     }
 
 }

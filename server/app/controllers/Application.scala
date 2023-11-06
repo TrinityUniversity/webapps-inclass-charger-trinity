@@ -5,6 +5,7 @@ import javax.inject._
 import shared.SharedMessages
 import play.api.mvc._
 import models._
+import play.api.libs.json.Json
 
 @Singleton
 class Application @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -32,13 +33,7 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
   NYKnicks             35   47 19532 3343 7230 1068 2993 1520 1943  830 3447 2062  497  988  370 1694  9274   0   0   0
   OrlandoMagic         48   34 19357 3389 7127 1064 3030 1504 1890  779 3448 2122  634 1155  416 1680  9346   0   0   0
   Philadelphia76ers    28   54 19468 3312 7005  952 2736 1518 1943  782 3374 1986  540 1107  381 1606  9094   0   0   0
-  PhoenixSuns          37   45 19368 3280 7043  938 2626 1651 2101  840 3515 1915  588 1114  327 1629  9149   0   0   0
-  PortlandTrailBlazers 49   33 19297 3522 7178 1029 2717 1555 1977  859 3545 2214  640 1055  352 1679  9628   0   0   0
-  SacramentoKings      34   48 19420 3589 7288 1022 2740 1481 1882  795 3460 2187  598 1117  340 1711  9681   0   0   0
-  SanAntonioSpurs      60   22 19414 3780 7460 1036 2651 1496 1942  877 3688 2198  665 1079  432 1516 10092   0   0   0
-  OklahomaCityThunder  42   40 19442 3437 7251 1059 2955 1611 2090  980 3821 2126  573 1325  455 1675  9544   0   0   0
-  TorontoRaptors       41   41 19398 3312 6752 1001 2676 1508 1893  757 3466 2148  492 1302  376 1604  9133   0   0   0
-  UtahJazz             45   37 19395 3555 7516 1023 2830 1544 1989  921 3564 2047  639  985  407 1679  9677   0   0   0
+  PhoenixSuns          37   45 19368 inc555 7516 1023 2830 1544 1989  921 3564 2047  639  985  407 1679  9677   0   0   0
   WashingtonWizards    47   35 19344 3481 7362  984 2687 1432 1794  882 3527 2035  581  971  406 1590  9378   0   0   0"""
 
   def index = Action {
@@ -71,8 +66,12 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
     }.getOrElse(Ok("Shawty done messed up"))
   }
 
-  def getNumber = Action {
+  def counterPage = Action {
     Ok(views.html.ctr(CountingModel.getNumber()))
+  }
+
+  def getNumber = Action {
+    Ok(Json.toJson(CountingModel.incNumber()))
   }
 
 }
